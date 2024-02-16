@@ -56,4 +56,30 @@ new Vue({
             this.editedTaskIndex = null;
             this.editedColumn = null;
         },
+        moveToInProgress(taskIndex) {
+            const taskToMove = this.plannedTasks.splice(taskIndex, 1)[0];
+            this.inProgressTasks.push(taskToMove);
+        },
+        moveToTesting(taskIndex) {
+            const taskToMove = this.inProgressTasks.splice(taskIndex, 1)[0];
+            this.testingTasks.push(taskToMove);
+        },
+        moveToTesting(taskIndex) {
+            const taskToMove = this.inProgressTasks.splice(taskIndex, 1)[0];
+            this.testingTasks.push(taskToMove);
+        },
+        moveToCompleted(taskIndex) {
+            const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            taskToMove.isOverdue = new Date(taskToMove.deadline) < new Date();
+            this.completedTasks.push(taskToMove);
+        },
+        returnToInProgress(taskIndex) {
+            if (!this.testingTasks[taskIndex].returnReason) {
+                alert('Укажите причину возврата.');
+                return;
+            }
+            const taskToMove = this.testingTasks.splice(taskIndex, 1)[0];
+            this.inProgressTasks.push(taskToMove);
+        }
+    }
 })
