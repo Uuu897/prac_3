@@ -42,4 +42,18 @@ new Vue({
             this.plannedTasks.push({...this.newTask});
             this.newTask = { title: '', description: '', deadline: '', createdAt: new Date().toLocaleString(), lastEdited: null };
         },
+        deleteTask(taskIndex) {
+            this.plannedTasks.splice(taskIndex, 1);
+        },
+        startEditing(taskIndex, column) {
+            this.editedTask = {...this[column][taskIndex]};
+            this.editedTaskIndex = taskIndex;
+            this.editedColumn = column;
+        },
+        finishEditing(taskIndex) {
+            this[this.editedColumn][taskIndex] = {...this.editedTask, lastEdited: new Date().toLocaleString()};
+            this.editedTask = null;
+            this.editedTaskIndex = null;
+            this.editedColumn = null;
+        },
 })
