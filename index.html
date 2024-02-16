@@ -72,5 +72,40 @@
             </li>
         </ul>
     </div>
+    <div class="column">
+        <h2>В работе</h2>
+        <ul>
+            <li v-for="(task, index) in inProgressTasks" :key="index" :class="`priority-${task.priority}`">
+                <div>
+                    <div v-if="editedTaskIndex !== index || editedColumn !== 'inProgressTasks'">
+                        <h3>{{ task.title }}</h3>
+                        <p>{{ task.description }}</p>
+                        <p>Приоритет: {{ task.priority }}</p>
+                        <p>Дэдлайн: {{ task.deadline }}</p>
+                        <p>Дата создания: {{ task.createdAt }}</p>
+                        <p>Последнее редактирование: {{ task.lastEdited }}</p>
+                        <button class="edit-button"
+                                @click="startEditing(index, 'inProgressTasks')">Редактировать</button>
+                        <button class="move-button" @click="moveToTesting(index)">Отправить в тестирование</button>
+                    </div>
+                    <div v-else>
+                        <form @submit.prevent="finishEditing(index)">
+                            <label for="editTitle">Заголовок задачи:</label>
+                            <input id="editTitle" type="text" v-model="editedTask.title">
+                            <label for="editDescription">Описание задачи:</label>
+                            <textarea id="editDescription" v-model="editedTask.description"></textarea>
+                            <label for="editDeadline">Дэдлайн:</label>
+                            <input id="editDeadline" type="date" v-model="editedTask.deadline">
+                            <button type="submit">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="column">
+        <h2>Тестирование</h2>
+</div>
 </body>
 </html>
