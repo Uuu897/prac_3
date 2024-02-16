@@ -27,3 +27,67 @@ form input, form textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+form button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #9b59b6;
+    color: black;
+    cursor: pointer;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #f9b;
+    color: black;
+    cursor: pointer;
+}
+
+.delete-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #e76c3c;
+    color: black;
+    cursor: pointer;
+}
+
+.move-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #9b59b6;
+    color: black;
+    cursor: pointer;
+}
+
+.return-reason-input {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.priority-1 {
+    background-color: red;
+}
+
+.priority-2 {
+    background-color: yellow;
+}
+
+.priority-3 {
+    background-color: green;
+}
+
+li {
+    list-style-type:none
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 12px;
+}
