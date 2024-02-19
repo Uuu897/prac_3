@@ -21,19 +21,19 @@ new Vue({
             completedTasks: [],
         }
     },
-        computed: {
-            prioritizedPlannedTasks() {
-                return this.plannedTasks.slice().sort((a, b) => a.priority - b.priority);
-            },
-            prioritizedInProgressTasks() {
-                return this.inProgressTasks.slice().sort((a, b) => a.priority - b.priority);
-            },
-            prioritizedTestingTasks() {
-                return this.testingTasks.slice().sort((a, b) => a.priority - b.priority);
-            },
-            prioritizedCompletedTasks() {
-                return this.completedTasks.slice().sort((a, b) => a.priority - b.priority);
-            },
+    computed: {
+        prioritizedPlannedTasks() {
+            return this.plannedTasks.slice().sort((a, b) => a.priority - b.priority);
+        },
+        prioritizedInProgressTasks() {
+            return this.inProgressTasks.slice().sort((a, b) => a.priority - b.priority);
+        },
+        prioritizedTestingTasks() {
+            return this.testingTasks.slice().sort((a, b) => a.priority - b.priority);
+        },
+        prioritizedCompletedTasks() {
+            return this.completedTasks.slice().sort((a, b) => a.priority - b.priority);
+        },
     },
     methods:{
         addTask() {
@@ -54,13 +54,13 @@ new Vue({
                 return;
             }
             if (this.newTask.priority === '1') {
-                this.plannedTasks.push({...this.newTask});
+                this.prioritizedPlannedTasks.push({...this.newTask});
             } else if (this.newTask.priority === '2') {
-                this.inProgressTasks.push({...this.newTask});
+                this.prioritizedInProgressTasks.push({...this.newTask});
             } else if (this.newTask.priority === '3') {
-                this.testingTasks.push({...this.newTask});
+                this.prioritizedTestingTasks.push({...this.newTask});
             } else if (this.newTask.priority === '4') {
-                this.completedTasks.push({...this.newTask});
+                this.prioritizedCompletedTasks.push({...this.newTask});
             }
             this.plannedTasks.push({...this.newTask});
             this.newTask = { title: '', description: '', deadline: '', createdAt: new Date().toLocaleString(), lastEdited: null };

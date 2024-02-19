@@ -38,10 +38,8 @@
             <button type="submit">Добавить задачу</button>
 
         </form>
-        <ul>
-            <li v-for="task in plannedTasks" :key="task.id" :class="`priority-${task.priority}`">
 
-                <div v-for="(task, index) in plannedTasks" :key="index">
+                <div v-for="(task, index) in prioritizedPlannedTasks" :key="index" :class="`priority-${task.priority}`">
                     <div v-if="editedTaskIndex !== index || editedColumn !== 'plannedTasks'">
                         <h3>{{ task.title }}</h3>
                         <p>{{ task.description }}</p>
@@ -69,14 +67,11 @@
                     <button class="delete-button" @click="deleteTask(index)">Удалить</button>
                     <button class="move-button" @click="moveToInProgress(index)">Переместить в работу</button>
                 </div>
-            </li>
-        </ul>
     </div>
     <div class="column">
         <h2>В работе</h2>
-        <ul>
-            <li v-for="(task, index) in inProgressTasks" :key="index" :class="`priority-${task.priority}`">
                 <div>
+                    <div v-for="(task, index) in prioritizedInProgressTasks" :key="index" :class="`priority-${task.priority}`">
                     <div v-if="editedTaskIndex !== index || editedColumn !== 'inProgressTasks'">
                         <h3>{{ task.title }}</h3>
                         <p>{{ task.description }}</p>
@@ -100,15 +95,12 @@
                         </form>
                     </div>
                 </div>
-            </li>
-
-        </ul>
+                </div>
     </div>
     <div class="column">
         <h2>Тестирование</h2>
-        <ul>
-            <li v-for="(task, index) in testingTasks" :key="index" :class="`priority-${task.priority}`">
                 <div>
+                    <div v-for="(task, index) in prioritizedTestingTasks" :key="index" :class="`priority-${task.priority}`">
                     <div v-if="editedTaskIndex !== index || editedColumn !== 'testingTasks'">
                         <h3>{{ task.title }}</h3>
                         <p>{{ task.description }}</p>
@@ -137,14 +129,12 @@
                         </form>
                     </div>
                 </div>
-            </li>
-        </ul>
+                </div>
     </div>
     <div class="column">
         <h2>Выполненные задачи</h2>
-        <ul>
-            <li v-for="(task, index) in completedTasks" :key="index" :class="`priority-${task.priority}`">
                 <div>
+                    <div v-for="(task, index) in prioritizedCompletedTasks" :key="index" :class="`priority-${task.priority}`">
                     <div v-if="editedTaskIndex !== index || editedColumn !== 'completedTasks'">
                         <h3>{{ task.title }}</h3>
                         <p>{{ task.description }}</p>
@@ -156,11 +146,9 @@
                         <p v-else>Задача выполнена в срок</p>
                     </div>
                 </div>
-            </li>
-        </ul>
+                </div>
     </div>
 </div>
+
 </body>
-<style>
-</style>
 </html>
